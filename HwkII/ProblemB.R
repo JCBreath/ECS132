@@ -74,8 +74,27 @@ CoVar <- function(nreps, nodeU_Index, nodeV_Index, nodeCount) {
 		co_var <- co_var + ((degVec[nodeU_Index] - EU) * (degVec[nodeV_Index] - EV))
 	}
 
+	co_var_U <- 0
+	co_var_V <- 0
+
+	for(i in 1:nreps) {
+		degVec <- PAMsim(nodeCount)
+
+		co_var_U <- co_var_U + (degVec[nodeU_Index] - EU)
+	}
+
+	for(i in 1:nreps) {
+		degVec <- PAMsim(nodeCount)
+
+		co_var_V <- co_var_V + (degVec[nodeV_Index] - EV)
+	}
+
+	co_var_U <- co_var_U / nreps
+	co_var_V <- co_var_V / nreps
+
+	co_var <- co_var_U - co_var_V
 	# Cov(U,V)=E[(U-EU)(V-EV)]
-	co_var <- co_var / nreps
+	#co_var <- co_var / nreps
 
 	return(co_var)
 }
