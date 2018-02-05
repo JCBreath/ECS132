@@ -1,0 +1,7 @@
+We know that P(S=j|T=i) = P(S=j and T=i)/ P(T=i); and also, if S and T are independet, this becomes P(S=j|T=i) = P(S=j)*P(T=i)/P(T=i) = P(S=j)
+However, if we consider the case where j = 2 and T = 0, we can see that they are not independent.
+P(S=2) means that both dices roll to 1, which has the possibility of (1/6)*(1/6) = 1/36.
+P(T=0) means that both dices roll to odd number, which has the possibility of (1/2)*(1/2) = 1/4.
+However, P(S=2|T=0) = P(S=2 and T=0)/ P(T=0): because for all S=2, only rolling two dices that both have value 1 will hold, so P(S=2 and T=0)=P(S=2);
+So P(S=2|T=0) = P(S=2) / P(T=0) = (1/36) / (1/4), which is certainly not the same as P(S=2), which is (1/36).
+So S and T are not independent.
