@@ -26,7 +26,7 @@ boardgame <- function(nreps,inipos){
         if (pos > 7){
             pos <- pos - 8 
             nwins <- nwins + 1
-            winning <- pos + 1
+            winning <- winning + pos + 1
         }
     }
     print(nreps/nwins)
