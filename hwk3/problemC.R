@@ -14,7 +14,7 @@ boardgame <- function(nreps,inipos){
     print(nreps/nwins)
     print(winning/nreps)
 }
-boardgame(20000,0)
+boardgame(50000,0)
 
 
 boardexpected <- function(nreps,inipos){
@@ -29,17 +29,18 @@ boardexpected <- function(nreps,inipos){
             rolls <- rolls + 1
             if (pos > 7){
                 won <- won + 1
+                break
             }
         }
         wins[rep] <- rolls
     }
     print(mean(wins))
 }
-boardexpected(20000,0)
-boardexpected(20000,1)
-boardexpected(20000,2)
-boardexpected(20000,3)
-boardexpected(20000,4)
-boardexpected(20000,5)
-boardexpected(20000,6)
-boardexpected(20000,7)
+boardexpected(50000,0)
+boardexpected(50000,1)
+boardexpected(50000,2)
+boardexpected(50000,3)
+boardexpected(50000,4)
+boardexpected(50000,5)
+boardexpected(50000,6)
+boardexpected(50000,7)
