@@ -1,7 +1,7 @@
 //skewnwss = (2-p)/(sqrt(r*(1-p))) = (2-0.4)/sqrt(3*0.6)=1.1925
 
 r = 3, p = 0.4
-skewness = E[(N - EN)^3 / stdvN] 
+skewness = E[(N - EN)^3 / stdvN^3] 
 EN = r*(1/p) = 3*(1/0.4) = 7.5
 VarN = r*(1-p)/(p^2) = 3*0.6/0.16 = 11.25
 stdvN = sqrt(VarN) = 3.3541
