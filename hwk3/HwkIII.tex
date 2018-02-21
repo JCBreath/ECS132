@@ -1,0 +1,72 @@
+\documentclass{amsart}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\setlist[1]{itemsep=3ex}
+\setlist[2]{itemsep=1ex}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\card}[1]{\overline{\overline{#1}}}
+
+\begin{document}
+\title{Homework assignment 3}
+\author{Siyuan Yao, Zhengfei Chen, Kai Yan}
+\maketitle
+
+\thispagestyle{empty}
+\pagestyle{empty}
+
+\begin{enumerate}
+\item Problem 1\\
+See code.
+\item Problem 2\\
+$r = 3, p = 0.4$\\
+$EN = r\cdot \dfrac{1}{p}=7.5$\\
+$Var(N) = r\cdot \dfrac{1-p}{p^2}=11.25$\\
+$\text{Standard Deviation of B} = \sqrt{Var(N)}= 3.35$\\
+$pN(k) = \displaystyle\binom{k-1}{r-1}\cdot(1-p)^{k-r}\cdot p^r$\\
+$skewness = E[(N-7.5)^3 / 3.3541^3] = E[(N-7.5)^3/37.7336] \\= \displaystyle\sum^\infty_{N=3}[ [((N-7.5)^3) / 37.7336] \cdot(0.4^3) \cdot (0.6 ^ {N-3} ) ]= 1.1925$
+\item Problem 3\\
+\begin{enumerate}
+\item long run average number of rolls between wins\\
+ Let's call the number of rolls between wins $M$. We are to find E(M);\\
+  if there are $M$ rolls between consecutive wins, then in long run, every $(M+1)$ rolls contain a win;\\
+  let $Avg(R)$ denotes the average of all the rolls we got between one win and another;\\
+  $E(M+1) = E\bigg(\dfrac{8}{Avg(R)}+1\bigg)=\dfrac{E(8)}{ E(Avg(R))} +1$\\
+  the expected value of $Avg(R)$ is just $ER$, which is 3.5 according to textbook;\\
+so $E(M) = E(M+1) -1 = \dfrac{E(8)}{ER} -1 = 8/3.5 -1 = 2.2857 -1 = 1.2857$
+\item long run value of total winnings per turn. \\
+  this should be equal to $\displaystyle\sum^5_{i=0}P(\text{land on i and win})(i+1)$\\
+  P(land on i and win) = P(land on i)$\cdot$P(win $|$ land on i)\\
+  P(land on i) for all i should be equal, which will be 1/8.\\
+  P(land on 0 and win) = (1/8)$\cdot$(1)\\
+  P(land on 1 and win) = (1/8)$\cdot$(5/6)\\
+  P(land on 2 and win) = (1/8)$\cdot$(4/6)\\
+  P(land on 3 and win) = (1/8)$\cdot$(3/6)\\
+  P(land on 4 and win) = (1/8)$\cdot$(2/6)\\
+  P(land on 5 and win) = (1/8)$\cdot$(1/6)\\
+$\displaystyle\sum^5_{i=0}P(\text{land on i and win})(i+1)$\\$= 1\cdot(1/8)\cdot1 + 2\cdot(1/8)\cdot(5/6) + 3\cdot(1/8)\cdot(4/6)+4\cdot(1/8)\cdot(3/6)+5\cdot(1/8)\cdot(2/6)+6\cdot(1/8)\cdot(1/6)$\\$ = 1.666667$\\
+so the value should be 1.666667
+  
+\item $ET_j$:\\
+if we start at square j, we need to get a total number of (8-j) to win;\\
+  let $S_i$ denotes the total squares we've advanced given i rolls; for example, if we rolled a 1, then a 2, then S2 = 1+2 = 3;\\
+  $P(T_j = N) = P[(S_n-1 < (8-j))$ and $( S_n >= (8-j))]$\\
+  for $ET_7$: we definitely will win in 1 roll, so $ET_7 = 1$;\\
+  for $ET_6$: we have 5/6 chance to win in 1 roll, and 1/6 chance that we roll a 1 first, then roll anything to win\\
+    so $ET_6 = 1\cdot5/6 + 2\cdot1/6 = 1.16666$\\
+  for $ET_5$: we have 4/6 chance to win in 1 roll, and 1/6 chance that we enter a situation which is exactly the same as $ET_6$, and 1/6 chance we enter a situation that's exactly like $ET_7$;\\
+    so $ET_5 = 1\cdot4/6 + (1+ET_6)\cdot1/6  + (1+ET_7)\cdot1/6 =  1.36111$\\
+  
+  so we see the pattern here: if we don't make it to win from our original state, we are entering one of the other states: for example, if we start out at position 5 and didn't win, we are either entering position 6 or 7, and thus we can use the ET of those state, except that we take one more steps to arrive, so we can do $(1+ET_i)\cdot P(j\rightarrow i)$ where j is our original state and i is the expected new state.\\
+  consequenctly:\\
+  $ET_4 = 1\cdot 3/6 + (1+ET_5)\cdot 1/6 + (1+ET_6)\cdot 1/6 + (1+ET_7)\cdot 1/6 = 1.58796\\
+  ET_3 = 1\cdot 2/6 + (1+ET_4)\cdot 1/6 + (1+ET_5)\cdot 1/6 + (1+ET_6)\cdot 1/6 + (1+ET_7)\cdot 1/6 = 1.85262\\
+  ET_2 = 1\cdot 1/6 + (1+ET_3)\cdot 1/6 + (1+ET_4)\cdot 1/6 + (1+ET_5)\cdot 1/6 + (1+ET_6)\cdot r1/6 + (1+ET_7)\cdot 1/6 = 2.16139\\
+  ET_1 = (1+ET_2)\cdot 1/6 + (1+ET_3)\cdot 1/6 + (1+ET_4)\cdot 1/6 + (1+ET_5)\cdot 1/6 + (1+ET_6)\cdot 1/6 + (1+ET_7)\cdot 1/6 = 2.52162\\
+ET_0 = (1+ET_1)\cdot 1/6 + (1+ET_2)\cdot 1/6 + (1+ET_3)\cdot 1/6 + (1+ET_4)\cdot 1/6 + (1+ET_5)\cdot 1/6 + (1+ET_6)\cdot 1/6 = 2.77523$
+\end{enumerate}
+\end{enumerate}
+\end{document}
