@@ -64,14 +64,14 @@ if we start at square j, we need to get a total number of (8-j) to win;\\
   consequenctly:\\
   $ET_4 = 1\cdot 3/6 + (1+ET_5)\cdot 1/6 + (1+ET_6)\cdot 1/6 + (1+ET_7)\cdot 1/6 = 1.58796\\
   ET_3 = 1\cdot 2/6 + (1+ET_4)\cdot 1/6 + (1+ET_5)\cdot 1/6 + (1+ET_6)\cdot 1/6 + (1+ET_7)\cdot 1/6 = 1.85262\\
-  ET_2 = 1\cdot 1/6 + (1+ET_3)\cdot 1/6 + (1+ET_4)\cdot 1/6 + (1+ET_5)\cdot 1/6 + (1+ET_6)\cdot r1/6 + (1+ET_7)\cdot 1/6 = 2.16139\\
+  ET_2 = 1\cdot 1/6 + (1+ET_3)\cdot 1/6 + (1+ET_4)\cdot 1/6 + (1+ET_5)\cdot 1/6 + (1+ET_6)\cdot 1/6 + (1+ET_7)\cdot 1/6 = 2.16139\\
   ET_1 = (1+ET_2)\cdot 1/6 + (1+ET_3)\cdot 1/6 + (1+ET_4)\cdot 1/6 + (1+ET_5)\cdot 1/6 + (1+ET_6)\cdot 1/6 + (1+ET_7)\cdot 1/6 = 2.52162\\
 ET_0 = (1+ET_1)\cdot 1/6 + (1+ET_2)\cdot 1/6 + (1+ET_3)\cdot 1/6 + (1+ET_4)\cdot 1/6 + (1+ET_5)\cdot 1/6 + (1+ET_6)\cdot 1/6 = 2.77523$\\\\\\
 \end{enumerate}
 \item Problem D\\
-$EV=P(U=1)E(V|U=1)+P(U=0)E(V|U=0)\\=p\cdot 1+(1-p))\cdot (1+EV)$\\
-$EV=p\cdot 1+(1-p)\cdot (1+EV)$\\
-$EV=p+1-p+EV-p*EV$\\
+$EV=P(U=1)E(V|U=1)+P(U=0)E(V|U=0)$\\
+$EV=p\cdot 1+(1-p)\cdot (1+EV)$ (plus one failed time)\\
+$EV=p+1-p+EV-p\cdot EV$\\
 $0=1-p\cdot EV$\\
 $p\cdot EV=1$\\
 $EV=\dfrac{1}{p}$\\
