@@ -2,12 +2,16 @@
 
 1. long run average number of rolls between wins
   call the number of rolls between wins M. We are to find E(M);
+  if there are M rolls between consecutive wins, then in long run, every (M+1) rolls contain a win;
   let Avg(R) denotes the average of all the rolls we got between one win and another;
-  E(M) = E(8/Avg(R))=E(8) / E(Avg(R))
+  E(M+1) = E(8/Avg(R)+1)=E(8) / E(Avg(R)) +1
   the expected value of Avg(R) is just ER, which is 3.5 according to textbook;
-  so E(M) = E(8) / ER = 8/3.5 = 2.2857
+  so E(M) = E(8) / ER -1 = 8/3.5 -1 = 2.2857 -1 = 1.2857
   
 2. long run value of total winnings per turn. 
+  P(land on i | win) = P(land on i and win) / P(win)
+  we know that the chance of landing on each square is each equal to 1/8;
+  P(win) = 
   
   
 3. ETj:
