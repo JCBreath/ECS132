@@ -1,3 +1,5 @@
+
+
 1. long run average number of rolls between wins
   call the number of rolls between wins M. We are to find E(M);
   let Avg(R) denotes the average of all the rolls we got between one win and another;
@@ -12,3 +14,12 @@
   if we start at square j, we need to get a total number of (8-j) to win;
   let Si denotes the total squares we've advanced given i rolls; for example, if we rolled a 1, then a 2, then S2 = 1+2 = 3;
   P(Tj = N) = P[(S n-1 < (8-j)) and ( Sn >= (8-j))]
+  for ET7: we definitely will win in 1 roll, so ET7 = 1;
+  for ET6: we have 5/6 chance to win in 1 roll, and 1/6 chance that we roll a 1 first, then roll anything to win
+    so ET6 = 1*5/6 + 2*1/6 = 1.16666
+  for ET5: we have 4/6 chance to win in 1 roll, and 1/6 chance that we enter a situation which is exactly the same as ET6, and 1/6 chance we enter a situation that's exactly like ET7;
+    so ET5 = 1*4/6 + (1+ET6)*1/6  + (1+ET7)*1/6 =  1.36111
+  
+  so we see the pattern here: if we don't make it to win from our original state, we are entering one of the other states: for example, if we start out at position 5 and didn't win, we are either entering position 6 or 7, and thus we can use the ET of those state, except that we take one more steps to arrive, so we can do (1+ETi)*P(j->i) where j is our original state and i is the expected new state.
+  consequenctly:
+  ET4 = 1*3/6 + (1+ET5)*1/6 + (1+ET6)*1/6 + (1+ET7)*1/6 = 1.58796
