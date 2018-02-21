@@ -9,9 +9,18 @@
   so E(M) = E(M+1) -1 = E(8) / ER -1 = 8/3.5 -1 = 2.2857 -1 = 1.2857
   
 2. long run value of total winnings per turn. 
-  P(land on i | win) = P(land on i and win) / P(win)
-  we know that the chance of landing on each square is each equal to 1/8;
-  P(win) = P(landed on 2/3/4/5/6/7 then win)= 1/(1/8)+(5/6)/(1/8)+(
+  this should be equal to SUM[P(land on i and win) * (i+1)] for i = 0/1/2/3/4/5
+  P(land on i and win) = P(land on i)*P(win | land on i)
+  P(land on i) for all i should be equal, which will be 1/8.
+  P(land on 0 and win) = (1/8)*(1)
+  P(land on 1 and win) = (1/8)*(5/6)
+  P(land on 2 and win) = (1/8)*(4/6)
+  P(land on 3 and win) = (1/8)*(3/6)
+  P(land on 4 and win) = (1/8)*(2/6)
+  P(land on 5 and win) = (1/8)*(1/6)
+  SUM[P(land on i and win) * (i+1)] for i = 0/1/2/3/4/5 = 1*(1/8)*1 + 2*(1/8)*(5/6) + 3*(1/8)*(4/6)+4*(1/8)*(3/6)+5*(1/8)*(2/6)+6*(1/8)*(1/6) = 1.666667
+  so the value should be 1.666667
+  
   
   
 3. ETj:
