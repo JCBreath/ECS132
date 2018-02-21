@@ -1,10 +1,10 @@
-$$E(U) = \sum_{c=1}^{\infty} P(V=c)E(U|V=c)$$
+$$E(V) = \sum_{c=1}^{\infty} P(U=c)E(V|U=c)$$
 We can use the coin sample in p72. 
-Let H represent V=1 and T represent the V=0. Then P(V=1) = P(H) = p and P(V=0) = p(T) = 1-p
-Then$$  E(U) = E(U|H)P(H) + E(U|T)P(T)$$ 
-$$E(U) = pE(U|H] + (1-p)E(U|T) $$
-$$E(U) =  p + (1-p)(E(U)+1) $$
-Here， E(U given T) = EU+1 because there is always one more independent tosse after the turn that toss a tail.
-$$E(U) =  p + E(U) - pE(U) + 1 - p$$
-$$ 0 =   -pE(U) + 1 $$
-$$ E(U) = 1/p $$
+Let H represent U=1 and T represent the U=0. Then P(U=1) = P(H) = p and P(U=0) = p(T) = 1-p
+Then$$  E(V) = E(V|H)P(H) + E(V|T)P(T)$$ 
+$$E(V) = pE(V|H] + (1-p)E(V|T) $$
+$$E(V) =  p + (1-p)(E(V)+1) $$
+Here， E(V given T) = EX+1 because there is always one more independent tosse after the turn that toss a tail.
+$$E(V) =  p + E(V) - pE(V) + 1 - p$$
+$$ 0 =   -pE(V) + 1 $$
+$$ E(V) = 1/p $$
