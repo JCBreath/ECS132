@@ -14,7 +14,7 @@ skew <- function(nreps,r,p){
         total <- 0
         number <- 0
         while (total < r){
-            get = sample(0:1,1,prob = c((1-p),p),replace = TRUE)
+            get = sample(0:1,size=1,prob = c((1-p),p),replace = FALSE)
             total = total + get
             number = number + 1
         }
@@ -40,4 +40,4 @@ skew <- function(nreps,r,p){
     print(result)
 }
 
-skew(10000,3,0.4)
+skew(40000,3,0.4)
