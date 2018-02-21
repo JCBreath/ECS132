@@ -8,3 +8,12 @@ Here， E(V given T) = EX+1 because there is always one more independent tosse a
 $$E(V) =  p + E(V) - pE(V) + 1 - p$$
 $$ 0 =   -pE(V) + 1 $$
 $$ E(V) = 1/p $$
+
+
+EV=P(U=1)E(V|U=1)+P(U=0)E(V|U=0)=p*1+(1-p)*(1+EV)
+
+EV=p*1+(1-p)*(1+EV)
+EV=p+1-p+EV-p*EV
+0=1-p*EV
+p*EV=1
+EV=1/p
