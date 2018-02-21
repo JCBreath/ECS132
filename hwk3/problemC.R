@@ -1,3 +1,4 @@
+
 boardgame <- function(nreps,inipos){
     nwins <- 0
     pos <- inipos
@@ -11,7 +12,9 @@ boardgame <- function(nreps,inipos){
             winning <- winning + pos + 1
         }
     }
+    print("The long-run average number of rolls between wins:")
     print(nreps/nwins)
+    print("The long-run value of total winnings per turn.")
     print(winning/nreps)
 }
 boardgame(50000,0)
@@ -34,8 +37,11 @@ boardexpected <- function(nreps,inipos){
         }
         wins[rep] <- rolls
     }
+    print(paste0("ET",inipos))
+    #print(inipos)
     print(mean(wins))
 }
+
 boardexpected(50000,0)
 boardexpected(50000,1)
 boardexpected(50000,2)
@@ -44,3 +50,5 @@ boardexpected(50000,4)
 boardexpected(50000,5)
 boardexpected(50000,6)
 boardexpected(50000,7)
+
+
