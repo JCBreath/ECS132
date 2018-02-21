@@ -22,7 +22,7 @@ skew <- function(nreps,r,p){
     }
     
     EN <- mean(Result_V)
-    print(EN)
+    #print(EN)
     
     for (rep_1 in 1:nreps){
         Var_V[rep_1] = (Result_V[rep_1] - EN)^2
@@ -30,8 +30,9 @@ skew <- function(nreps,r,p){
     Var <- mean(Var_V)           
     stdV <- sqrt(Var)
     
-    print(Var)
+    #print(Var)
     
+    stdV<- sqrt(Var)
     for (rep_2 in 1:nreps){
         SK_V[rep_2] = ((Result_V[rep_2] - EN)^3 /(stdV^3))
     }
