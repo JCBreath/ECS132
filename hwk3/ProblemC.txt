@@ -10,4 +10,5 @@
   
 3. ETj:
   if we start at square j, we need to get a total number of (8-j) to win;
-  so if we 
+  let Si denotes the total squares we've advanced given i rolls; for example, if we rolled a 1, then a 2, then S2 = 1+2 = 3;
+  P(Tj = N) = P[(S n-1 < (8-j)) and ( Sn >= (8-j))]
