@@ -7,7 +7,7 @@ rucd <- function(n,c) {
 };
 
 
-ducd(0.5,2);
-pucd(0.5,2);
-qucd(0.5,2);
-rucd(100,2);
+#ducd(0.5,2);
+#pucd(0.5,2);
+#qucd(0.5,2);
+#rucd(100,2);
