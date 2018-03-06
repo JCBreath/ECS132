@@ -1,0 +1,73 @@
+\documentclass{amsart}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\setlist[1]{itemsep=3ex}
+\setlist[2]{itemsep=1ex}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\begin{document}
+\title{Homework assignment 4}
+\author{Siyuan Yao, Zhengfei Chen, Kai Yan}
+\maketitle
+
+\thispagestyle{empty}
+\pagestyle{empty}
+
+\begin{enumerate}
+\item Problem A\\
+\begin{enumerate}
+\item Since ducd wants to find the density at the value x, it with solved original function $f_x(x)$ with given value:\\
+$ducd(x,c)=\dfrac{3}{2\cdot(c^{1.5}-1)}\cdot x^{0.5}$\\
+\item pucd wants to find the cdf at value in q, which means it want to find the Fx(x), which is the integral of the fx(x).\\
+$pucd(q,c)=\displaystyle\int^{q}_{1} \dfrac{3}{2\cdot(c^{1.5}-1)}\cdot x^{0.5} dx=\dfrac{q^{1.5}}{c^{1.5}-1}-\dfrac{1^{1.5}}{c^{1.5}-1}=\dfrac{q^{1.5}-1}{c^{1.5}-1}$\\
+\item qucd wants to find the quantiles at the values of q. This means it will get want to find the inverse of cdf function.\\
+$qucd(q,c)=(q\cdot(c^{1.5}-1)+1)^{\frac{2}{3}}$\\
+\item In rucd, we want to generate n random values. So, we use runif to generate n random probabilities and use qucd to get the value of t's that have those probabilities.\\
+rucd $<$- function(n,c) \{\\
+\tab tmp $<$- runif(n);\\
+\tab qucd(tmp,c);\\
+\};\\
+\end{enumerate}
+\item Extra Credit
+\begin{enumerate}
+\item Expected value\\\\
+According to the given formula:\\
+$ EV = E[g(U)]$\\
+where \\$g(t) = E(V | U = t)$\\
+we plug in \\$V = D $\\and \\$U = (N,p)$\\
+and get:\\
+\\$ED = E(E(D|(N,p)=t))$\\\\
+since " Given N and p, D has a binomial distribution with N trials and success probability p",we have:\\
+\\$ED = E(N*p)$\\\\
+since N and p are independent as stated in the prompt\\
+\\$ED = E(N*p)=E(N)*E(p)$\\\\
+The expected value for Poisson distribution is $\lambda$\ , while the expected value for Beta distribution is $\alpha / (\alpha + \beta)$\\
+so we get:\\
+\\$ED = E(N*p)=E(N)*E(p)=\lambda*\alpha / (\alpha + \beta)$
+\newpage
+\item Variance\\\\
+again,according to the given formula:\\
+$Var(V) = E[v(U)] + Var[e(U)]$\\
+where $v(t) = Var(V | U = t)$ and $e(t) = E(V | U = t) $\\
+from that we can derive:\\
+$Var(V)= E[v(U)] + E[(e(U))^2] + (E[e(U)])^2$\\
+again,we plug in \\$V = D $\\and \\$U = (N,p)$\\
+so:\\
+$Var(D)= E[v(D)] + E[(e(D))^2] + (E[e(D)])^2$\\
+$=\int_{}^{} N *fu(N) * p * fu(p) * (1 - p * fu(p))dNdp$\\
+$+\int_{}^{} (N *fu(N) * p * fu(p))^2 )dNdp$\\
+$-\int_{}^{} (N *fu(N) * p * fu(p)) )dNdp$\\
+we plug in:\\
+$\int_{}^{}((p*fu(p))^2)dp = E(p^2) = Var(p) + (E(p))^2 = (\alpha+(\alpha)^2*(\alpha+\beta+1)/((\alpha+\beta)^2)*(\alpha+\beta+1))$\\
+and:\\
+$\int_{}^{}(N*fu(N))^2dN = E(N^2)=Var(N)+(E(N))^2=\lambda + (\lambda)^2$\\
+then we can integral everything and get:
+$Var(D)= $\\
+\\$((\lambda)^2*(\alpha*\lambda+(\alpha)^2*(\alpha+\lambda+1))/((\alpha+\lambda)^2*(\alpha+\lambda+1)))+(\lambda*a/(\alpha+\beta))-(\lambda*\alpha/(\alpha+\beta))$\\
+
+\end{enumerate}
+\end{enumerate}
+\end{document}
