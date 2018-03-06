@@ -1,0 +1,54 @@
+\documentclass{amsart}
+
+\usepackage{enumitem}
+\setlist[1]{itemsep=4ex}
+\setlist[2]{itemsep=1ex}
+\renewcommand\lnot{\sim}
+
+\begin{document}
+\title{Homework assignment 3 EC}
+\author{Siyuan Yao, Kai Yan, Zhengfei Chen}
+\maketitle
+
+\thispagestyle{empty}
+\pagestyle{empty}
+
+\begin{enumerate}
+\item Expected value\\\\
+According to the given formula:\\
+$ EV = E[g(U)]$\\
+where \\$g(t) = E(V | U = t)$\\
+we plug in \\$V = D $\\and \\$U = (N,p)$\\
+and get:\\
+\\$ED = E(E(D|(N,p)=t))$\\\\
+since " Given N and p, D has a binomial distribution with N trials and success probability p",we have:\\
+\\$ED = E(N*p)$\\\\
+since N and p are independent as stated in the prompt\\
+\\$ED = E(N*p)=E(N)*E(p)$\\\\
+The expected value for Poisson distribution is $\lambda$\ , while the expected value for Beta distribution is $\alpha / (\alpha + \beta)$\\
+so we get:\\
+\\$ED = E(N*p)=E(N)*E(p)=\lambda*\alpha / (\alpha + \beta)$
+\newpage
+\item Variance\\\\
+again,according to the given formula:\\
+$Var(V) = E[v(U)] + Var[e(U)]$\\
+where $v(t) = Var(V | U = t)$ and $e(t) = E(V | U = t) $\\
+from that we can derive:\\
+$Var(V)= E[v(U)] + E[(e(U))^2] + (E[e(U)])^2$\\
+again,we plug in \\$V = D $\\and \\$U = (N,p)$\\
+so:\\
+$Var(D)= E[v(D)] + E[(e(D))^2] + (E[e(D)])^2$\\
+$=\int_{}^{} N *fu(N) * p * fu(p) * (1 - p * fu(p))dNdp$\\
+$+\int_{}^{} (N *fu(N) * p * fu(p))^2 )dNdp$\\
+$-\int_{}^{} (N *fu(N) * p * fu(p)) )dNdp$\\
+we plug in:\\
+$\int_{}^{}((p*fu(p))^2)dp = E(p^2) = Var(p) + (E(p))^2 = (\alpha+(\alpha)^2*(\alpha+\beta+1)/((\alpha+\beta)^2)*(\alpha+\beta+1))$\\
+and:\\
+$\int_{}^{}(N*fu(N))^2dN = E(N^2)=Var(N)+(E(N))^2=\lambda + (\lambda)^2$\\
+then we can integral everything and get:
+$Var(D)= $\\
+\\$((\lambda)^2*(\alpha*\lambda+(\alpha)^2*(\alpha+\lambda+1))/((\alpha+\lambda)^2*(\alpha+\lambda+1)))+(\lambda*a/(\alpha+\beta))-(\lambda*\alpha/(\alpha+\beta))$\\
+
+\end{enumerate}
+
+\end{document}
