@@ -1,11 +1,18 @@
-$$ducd <- function(x,c) {(3/(c^2-1))* x^2};$$
-Since ducd wants to find the density at the value x, it with solved original function f_x(x)with given value.
-$$pucd <- function(q,c) {q^3 /(c^2-1)};$$
-pucd wants to find the cdf at value in q, which means it want to find the Fx(x), which is the integral of the fx(x).
-$$qucd <- function(q,c) {(q*(c^2-1))^{1/3}};$$
-qucd wants to find the quantiles at the values of q. This means it will get want to find the inverse of cdf function.
-$$rucd <- function(n,c) {
+#density
+ducd <-function(x,c) {( 3/(2*(c^1.5-1)) ) *x^0.5};
+The density function is just based on the fx(x) function. Thus, we just used the original function.
+
+#cdf
+pucd <- function(q,c) {(q^1.5 /(c^1.5-1))-1/(c^1.5-1)};
+CDF = F(x), which is the integral of density function, and the interval is said to b from 1 to c; Thus, we wrote the function in subtraction in form of c and 1.
+
+#quantile function
+qucd <- function(q,c) {((c^1.5-1)*q+1)^{2/3}};
+Since Q = F^-1, the quantile function is the inverse of CDF. And this function is the inverse of the function given in cdf.
+
+#random number generator
+rucd <- function(n,c) {
 	tmp <- runif(n);
 	qucd(tmp,c);
-};$$
+};
 In rucd, we want to generate n random values. So, we use runif to generate n random values and use qucd to convert it into a value of quantile.
