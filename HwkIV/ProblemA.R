@@ -10,4 +10,4 @@ rucd <- function(n,c) {
 	qucd(tmp,c);
 };
 
-print(mean(rucd(1000000,5)));
+#print(mean(rucd(1000000,5)));
