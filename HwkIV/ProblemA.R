@@ -1,13 +1,13 @@
-ducd <-function(x,c) {(3/(c^2-1))* x^2};
-pucd <- function(q,c) {(q^3 /(c^2-1))*(c-1)};
-qucd <- function(q,c) {(q*(c^2-1))^{1/3}};
+#density
+ducd <-function(x,c) {( 3/(2*(c^1.5-1)) ) *x^0.5};
+#cdf
+pucd <- function(q,c) {(q^1.5 /(c^1.5-1))-1/(c^1.5-1)};
+#quantile function
+qucd <- function(q,c) {((c^1.5-1)*q+1)^{2/3}};
+#random number generator
 rucd <- function(n,c) {
 	tmp <- runif(n);
 	qucd(tmp,c);
 };
 
-
-#ducd(0.5,2);
-#pucd(0.5,2);
-#qucd(0.5,2);
-#rucd(100,2);
+print(mean(rucd(1000000,5)));
