@@ -41,5 +41,8 @@ CI_95(E158)
 
 CI_DIFF(E132, E145)
 
-#LCSI_E145 <- 
-#ECSE
+LCSI_E145 <- c(unlist(subset(E145_F14, V1 == 'LCSI')['V2']), unlist(subset(E145_W17, V1 == 'LCSI')['V2']))
+ECSE_E145 <- c(unlist(subset(E145_F14, V1 == 'ECSE')['V2']), unlist(subset(E145_W17, V1 == 'ECSE')['V2']))
+
+CI_DIFF(LCSI_E145, ECSE_E145)
+
