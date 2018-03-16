@@ -7,6 +7,17 @@ CI_95 <- function(data) {
 	return(c(wbar-radius, wbar+radius))
 }
 
+CI_DIFF <- function(data1, data2) {
+	xbar <- mean(data1)
+	ybar <- mean(data2)
+	s1 <- sqrt(mean(data1^2) - xbar^2)
+	s2 <- sqrt(mean(data2^2) - ybar^2)
+	n1 <- length(data1)
+	n2 <- length(data2)
+	radius <- 1.96*sqrt(s1^2/n1 + s2^2/n2)
+	return(c(xbar-ybar-radius, xbar-ybar+radius))
+}
+
 E132_W17 <- read.table('ProblemAData/132/W17.txt')
 E132_W16 <- read.table('ProblemAData/132/W16.txt')
 E132_W15 <- read.table('ProblemAData/132/W15.txt')
@@ -27,3 +38,8 @@ E158 <- c(unlist(E158_F13['V2']), unlist(E158_F17['V2']), unlist(E158_S16['V2'])
 CI_95(E132)
 CI_95(E145)
 CI_95(E158)
+
+CI_DIFF(E132, E145)
+
+#LCSI_E145 <- 
+#ECSE
