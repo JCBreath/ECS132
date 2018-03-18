@@ -18,6 +18,15 @@ CI_DIFF <- function(data1, data2) {
 	return(c(xbar-ybar-radius, xbar-ybar+radius))
 }
 
+Create_Vec <- function(length, value) {
+	x <- vector(length = length)
+
+	for(i in 1:length)
+		x[i] <- value
+
+	return(x)
+}
+
 E132_W17 <- read.table('ProblemAData/132/W17.txt')
 E132_W16 <- read.table('ProblemAData/132/W16.txt')
 E132_W15 <- read.table('ProblemAData/132/W15.txt')
@@ -30,6 +39,7 @@ E158_F13 <- read.table('ProblemAData/158/F13.txt')
 E158_F17 <- read.table('ProblemAData/158/F17.txt')
 E158_S16 <- read.table('ProblemAData/158/S16.txt')
 E158_W15 <- read.table('ProblemAData/158/W15.txt')
+
 
 E132 <- c(unlist(E132_W17['V2']), unlist(E132_W16['V2']), unlist(E132_W15['V2']), unlist(E132_F13['V2']))
 E145 <- c(unlist(E145_F14['V2']), unlist(E145_W17['V2']))
@@ -46,3 +56,33 @@ ECSE_E145 <- c(unlist(subset(E145_F14, V1 == 'ECSE')['V2']), unlist(subset(E145_
 
 CI_DIFF(LCSI_E145, ECSE_E145)
 
+course_vec <- c(Create_Vec(length(E132), 132), Create_Vec(length(E145), 145), Create_Vec(length(E158), 158))
+year_vec <- c(Create_Vec(length(unlist(E132_W17['V2'])), 2017), 
+			Create_Vec(length(unlist(E132_W16['V2'])), 2016), 
+			Create_Vec(length(unlist(E132_W15['V2'])), 2015),
+			Create_Vec(length(unlist(E132_F13['V2'])), 2013),
+			Create_Vec(length(unlist(E145_F14['V2'])), 2014),
+			Create_Vec(length(unlist(E145_W17['V2'])), 2017),
+			Create_Vec(length(unlist(E158_F13['V2'])), 2013),
+			Create_Vec(length(unlist(E158_F17['V2'])), 2017),
+			Create_Vec(length(unlist(E158_S16['V2'])), 2016),
+			Create_Vec(length(unlist(E158_W15['V2'])), 2015))
+major_vec <- c(unlist(E132_W17['V1']), 
+			unlist(E132_W16['V1']), 
+			unlist(E132_W15['V1']), 
+			unlist(E132_F13['V1']),
+			unlist(E145_F14['V1']), 
+			unlist(E145_W17['V1']), 
+			unlist(E158_F13['V1']), 
+			unlist(E158_F17['V1']), 
+			unlist(E158_S16['V1']), 
+			unlist(E158_W15['V1']))
+
+dat <- data.frame(Score = c(E132, E145, E158),
+                  Course = course_vec,
+                  Year = year_vec,
+                  Major = major_vec)
+
+print(dat)
+
+lm(Score ~ Course + Year + Major, data = dat)
