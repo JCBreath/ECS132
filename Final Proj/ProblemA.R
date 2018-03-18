@@ -83,6 +83,32 @@ dat <- data.frame(Score = c(E132, E145, E158),
                   Year = year_vec,
                   Major = major_vec)
 
-print(dat)
+plot(dat)
 
-lm(Score ~ Course + Year + Major, data = dat)
+plot(lm(Score ~ Course + Year + Major, data = dat))
+
+
+length(unlist(subset(subset(dat, Year == 2017), Major == 1)['Score']))
+
+length(unlist(subset(subset(dat, Year == 2016), Major == 1)['Score']))
+
+length(unlist(subset(subset(dat, Year == 2015), Major == 1)['Score']))
+
+length(unlist(subset(subset(dat, Year == 2014), Major == 1)['Score']))
+
+length(unlist(subset(subset(dat, Year == 2013), Major == 1)['Score']))
+
+CS <- c(length(unlist(subset(subset(dat, Year == 2017), Major == 2)['Score'])),
+	length(unlist(subset(subset(dat, Year == 2016), Major == 2)['Score'])),
+	length(unlist(subset(subset(dat, Year == 2015), Major == 2)['Score'])),
+	length(unlist(subset(subset(dat, Year == 2014), Major == 2)['Score'])),
+	length(unlist(subset(subset(dat, Year == 2013), Major == 2)['Score'])))
+CSE <- c(length(unlist(subset(subset(dat, Year == 2017), Major == 1)['Score'])),
+	length(unlist(subset(subset(dat, Year == 2016), Major == 1)['Score'])),
+	length(unlist(subset(subset(dat, Year == 2015), Major == 1)['Score'])),
+	length(unlist(subset(subset(dat, Year == 2014), Major == 1)['Score'])),
+	length(unlist(subset(subset(dat, Year == 2013), Major == 1)['Score'])))
+
+print(CS)
+print(CSE)
+print(CS / (CS + CSE))
