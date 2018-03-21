@@ -27,18 +27,20 @@ Create_Vec <- function(length, value) {
 	return(x)
 }
 
-E132_W17 <- read.table('ProblemAData/132/W17.txt')
-E132_W16 <- read.table('ProblemAData/132/W16.txt')
-E132_W15 <- read.table('ProblemAData/132/W15.txt')
-E132_F13 <- read.table('ProblemAData/132/F13.txt')
+url <- 'http://heather.cs.ucdavis.edu/~matloff/132/Hwk/'
 
-E145_F14 <- read.table('ProblemAData/145/F14.txt')
-E145_W17 <- read.table('ProblemAData/145/W17.txt')
+E132_W17 <- read.table('http://heather.cs.ucdavis.edu/~matloff/132/Hwk/ProblemAData/132/W17.txt')
+E132_W16 <- read.table('http://heather.cs.ucdavis.edu/~matloff/132/Hwk/ProblemAData/132/W16.txt')
+E132_W15 <- read.table('http://heather.cs.ucdavis.edu/~matloff/132/Hwk/ProblemAData/132/W15.txt')
+E132_F13 <- read.table('http://heather.cs.ucdavis.edu/~matloff/132/Hwk/ProblemAData/132/F13.txt')
 
-E158_F13 <- read.table('ProblemAData/158/F13.txt')
-E158_F17 <- read.table('ProblemAData/158/F17.txt')
-E158_S16 <- read.table('ProblemAData/158/S16.txt')
-E158_W15 <- read.table('ProblemAData/158/W15.txt')
+E145_F14 <- read.table('http://heather.cs.ucdavis.edu/~matloff/132/Hwk/ProblemAData/145/F14.txt')
+E145_W17 <- read.table('http://heather.cs.ucdavis.edu/~matloff/132/Hwk/ProblemAData/145/W17.txt')
+
+E158_F13 <- read.table('http://heather.cs.ucdavis.edu/~matloff/132/Hwk/ProblemAData/158/F13.txt')
+E158_F17 <- read.table('http://heather.cs.ucdavis.edu/~matloff/132/Hwk/ProblemAData/158/F17.txt')
+E158_S16 <- read.table('http://heather.cs.ucdavis.edu/~matloff/132/Hwk/ProblemAData/158/S16.txt')
+E158_W15 <- read.table('http://heather.cs.ucdavis.edu/~matloff/132/Hwk/ProblemAData/158/W15.txt')
 
 
 E132 <- c(unlist(E132_W17['V2']), unlist(E132_W16['V2']), unlist(E132_W15['V2']), unlist(E132_F13['V2']))
