@@ -112,10 +112,14 @@ CSE <- c(length(unlist(subset(subset(dat, Year == 2017.75), Major == 1)['Score']
 	length(unlist(subset(subset(dat, Year == 2014.75), Major == 1)['Score'])),
 	length(unlist(subset(subset(dat, Year == 2013.75), Major == 1)['Score'])))
 
+year <- c(2017.75,2017,2016.25,2016,2015,2014.75,2013.75)
+names(CS) = year
 print(CS)
-
+names(CSE) = year
 print(CSE)
 
 prop <- CS / (CS + CSE)
-
+names(prop) = year
 print(prop)
+
+lm(prop ~ year)
