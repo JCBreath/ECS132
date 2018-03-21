@@ -7,7 +7,6 @@ Then, we concatenate each quarters of a class 132, 145, 158 together and form a 
 The first problem in Part A asks us to find the 95 confidence interval, we we first find the 
 mean value, standard deviation std, total number n of each class's score, and calculate the 95% 
 confidence interval by ( mean - std / sqrt(n) , mean + std / sqrt(n) ). This part is done by CI_95 function in our program.
-
 	95% confidence interval for each class:
 	ECS132 (2.542122, 2.758809)
 	ECS145 (3.160756, 3.403172)
