@@ -1,0 +1,40 @@
+PartA
+We first need to read the data from each of the class within each of the quarter. 
+So, we use read.table() and get the data by putting the related url link in it. 
+For example, E132_W17 <- read.table('http://heather.cs.ucdavis.edu/~matloff/132/Hwk/ProblemAData/132/W17.txt'). 
+Then, we concatenate each quarters of a class 132, 145, 158 together and form a complete table.
+
+The first problem in Part A asks us to find the 95 confidence interval, we we first find the 
+mean value, standard deviation std, total number n of each class's score, and calculate the 95% 
+confidence interval by ( mean - std / sqrt(n) , mean + std / sqrt(n) ). This part is done by CI_95 function in our program.
+
+For the second question, we are asked to find the 95 condidence interval for both ecs 132 and 145, 
+which means we need to find the confidence interval for 2 independent samples. Let sample of 132 
+denote A and sample of 145 denote B. Then, the 95 confidence interval is 
+(mean_A - mean_B + 1.96* sqrt(std_A^2/n_A + std_B^2/n_B), mean_A - mean_B - 1.96* sqrt(std_A^2/n_A + std_B^2/n_B)). 
+This part is done by CI_DIFF function in our program.
+
+The third question is similar to the second problem. We just need to extract 2 set of data that based on 
+ECS145' data's first column of information, "LCSI" and "ECSE", and get 2 separate file by usuing the subset.
+Then, we use the CI_DIFF function in our program, and process the data as 2 separate sample, and get the 
+95 confidence interval in the similar way as the second problem.
+
+The fourth question, we need to first form 3 vectors, year, course, and major. For year, 
+we defind by the format "year.quarter". So, for example, winter 2017 is labeled as 2017.00, 
+spring 2016 is labeled as 2016.25, and fall 2015 is labeled as 2015.75. For course, 
+we label 0 for ECS132, 1 for ECS145, and 2 for ECS158. For major, we label ECSE as 0 and 
+LCSI as 1. Then, we match these label with the dataset we have. The, we combine score, course, 
+year, and major into big chunk of data. So, here, we provide a plot that show the relationship 
+between each group of data. 
+Then, we train the linear regression with function lm(Score ~ Course + Year + Major, data = dat).
+
+
+
+
+for the last question of A, we tried to build a model based on the proportion of CS major and the year; 
+then we plot it to get a sense of how well it fits; We come to the conclusion that the model doesn't fit 
+the datas well. A Normal Q-Q graph would be nearly linear in ideal cases, but the points are all over the places
+and far from the dotted line, which means our model doesn't pass the test of Normality; for the scale-location 
+graph, ideally we should have a horizontal line, but instead we result in a irregular sparse graph with our model, 
+which means it doesn't pass its test either; finally, for residuals vs leverage graph, although dots are all
+lied within the region formed by cook's distance, they are pretty close to the borders.
