@@ -44,29 +44,30 @@ E158_W15 <- read.table('ProblemAData/158/W15.txt')
 E132 <- c(unlist(E132_W17['V2']), unlist(E132_W16['V2']), unlist(E132_W15['V2']), unlist(E132_F13['V2']))
 E145 <- c(unlist(E145_F14['V2']), unlist(E145_W17['V2']))
 E158 <- c(unlist(E158_F13['V2']), unlist(E158_F17['V2']), unlist(E158_S16['V2']), unlist(E158_W15['V2']))
-
+print("95% confidence intervals for the population mean quiz average for each of the three courses: ")
 CI_95(E132)
 CI_95(E145)
 CI_95(E158)
-
+print("95% confidence interval for the difference in population mean quiz averages for ECS 132 and 145: ")
 CI_DIFF(E132, E145)
 
 LCSI_E145 <- c(unlist(subset(E145_F14, V1 == 'LCSI')['V2']), unlist(subset(E145_W17, V1 == 'LCSI')['V2']))
 ECSE_E145 <- c(unlist(subset(E145_F14, V1 == 'ECSE')['V2']), unlist(subset(E145_W17, V1 == 'ECSE')['V2']))
-
+print("95% confidence interval for the difference in population mean quiz averages in ECS 145 between the two majors: ")
 CI_DIFF(LCSI_E145, ECSE_E145)
+#length(c(E132,E145,E158))
+course_vec <- c(Create_Vec(length(E132), 0), Create_Vec(length(E145), 1), Create_Vec(length(E158), 2))
+year_vec <- c(Create_Vec(length(unlist(E132_W17['V2'])), 2017.00), 
+			Create_Vec(length(unlist(E132_W16['V2'])), 2016.00), 
+			Create_Vec(length(unlist(E132_W15['V2'])), 2015.00),
+			Create_Vec(length(unlist(E132_F13['V2'])), 2013.75),
+			Create_Vec(length(unlist(E145_F14['V2'])), 2014.75),
+			Create_Vec(length(unlist(E145_W17['V2'])), 2017.00),
+			Create_Vec(length(unlist(E158_F13['V2'])), 2013.75),
+			Create_Vec(length(unlist(E158_F17['V2'])), 2017.75),
+			Create_Vec(length(unlist(E158_S16['V2'])), 2016.25),
+			Create_Vec(length(unlist(E158_W15['V2'])), 2015.00))
 
-course_vec <- c(Create_Vec(length(E132), 132), Create_Vec(length(E145), 145), Create_Vec(length(E158), 158))
-year_vec <- c(Create_Vec(length(unlist(E132_W17['V2'])), 2017), 
-			Create_Vec(length(unlist(E132_W16['V2'])), 2016), 
-			Create_Vec(length(unlist(E132_W15['V2'])), 2015),
-			Create_Vec(length(unlist(E132_F13['V2'])), 2013),
-			Create_Vec(length(unlist(E145_F14['V2'])), 2014),
-			Create_Vec(length(unlist(E145_W17['V2'])), 2017),
-			Create_Vec(length(unlist(E158_F13['V2'])), 2013),
-			Create_Vec(length(unlist(E158_F17['V2'])), 2017),
-			Create_Vec(length(unlist(E158_S16['V2'])), 2016),
-			Create_Vec(length(unlist(E158_W15['V2'])), 2015))
 major_vec <- c(unlist(E132_W17['V1']), 
 			unlist(E132_W16['V1']), 
 			unlist(E132_W15['V1']), 
@@ -78,37 +79,43 @@ major_vec <- c(unlist(E132_W17['V1']),
 			unlist(E158_S16['V1']), 
 			unlist(E158_W15['V1']))
 
+major_vec[major_vec == 2] <- 0
+
+#print(major_vec)
+
 dat <- data.frame(Score = c(E132, E145, E158),
                   Course = course_vec,
                   Year = year_vec,
                   Major = major_vec)
 
+#print(dat)
+
 plot(dat)
 
 plot(lm(Score ~ Course + Year + Major, data = dat))
+print("Course: 0:ECS 132 1:ECS 145 2:ECS 158")
+print("Major: 0:CS 1:CSE")
+lm(Score ~ Course + Year + Major, data = dat)
 
-
-length(unlist(subset(subset(dat, Year == 2017), Major == 1)['Score']))
-
-length(unlist(subset(subset(dat, Year == 2016), Major == 1)['Score']))
-
-length(unlist(subset(subset(dat, Year == 2015), Major == 1)['Score']))
-
-length(unlist(subset(subset(dat, Year == 2014), Major == 1)['Score']))
-
-length(unlist(subset(subset(dat, Year == 2013), Major == 1)['Score']))
-
-CS <- c(length(unlist(subset(subset(dat, Year == 2017), Major == 2)['Score'])),
-	length(unlist(subset(subset(dat, Year == 2016), Major == 2)['Score'])),
-	length(unlist(subset(subset(dat, Year == 2015), Major == 2)['Score'])),
-	length(unlist(subset(subset(dat, Year == 2014), Major == 2)['Score'])),
-	length(unlist(subset(subset(dat, Year == 2013), Major == 2)['Score'])))
-CSE <- c(length(unlist(subset(subset(dat, Year == 2017), Major == 1)['Score'])),
+CS <- c(length(unlist(subset(subset(dat, Year == 2017.75), Major == 0)['Score'])),
+	length(unlist(subset(subset(dat, Year == 2017), Major == 0)['Score'])),
+	length(unlist(subset(subset(dat, Year == 2016.25), Major == 0)['Score'])),
+	length(unlist(subset(subset(dat, Year == 2016), Major == 0)['Score'])),
+	length(unlist(subset(subset(dat, Year == 2015), Major == 0)['Score'])),
+	length(unlist(subset(subset(dat, Year == 2014.75), Major == 0)['Score'])),
+	length(unlist(subset(subset(dat, Year == 2013.75), Major == 0)['Score'])))
+CSE <- c(length(unlist(subset(subset(dat, Year == 2017.75), Major == 1)['Score'])),
+	length(unlist(subset(subset(dat, Year == 2017), Major == 1)['Score'])),
+	length(unlist(subset(subset(dat, Year == 2016.25), Major == 1)['Score'])),
 	length(unlist(subset(subset(dat, Year == 2016), Major == 1)['Score'])),
 	length(unlist(subset(subset(dat, Year == 2015), Major == 1)['Score'])),
-	length(unlist(subset(subset(dat, Year == 2014), Major == 1)['Score'])),
-	length(unlist(subset(subset(dat, Year == 2013), Major == 1)['Score'])))
+	length(unlist(subset(subset(dat, Year == 2014.75), Major == 1)['Score'])),
+	length(unlist(subset(subset(dat, Year == 2013.75), Major == 1)['Score'])))
 
 print(CS)
+
 print(CSE)
-print(CS / (CS + CSE))
+
+prop <- CS / (CS + CSE)
+
+print(prop)
