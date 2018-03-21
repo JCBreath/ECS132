@@ -28,10 +28,7 @@ year, and major into big chunk of data. So, here, we provide a plot that show th
 between each group of data. 
 Then, we train the linear regression with function lm(Score ~ Course + Year + Major, data = dat).
 
-
-
-
-for the last question of A, we tried to build a model based on the proportion of CS major and the year; 
+For the last question of A, we tried to build a model based on the proportion of CS major and the year; 
 then we plot it to get a sense of how well it fits; We come to the conclusion that the model doesn't fit 
 the datas well. A Normal Q-Q graph would be nearly linear in ideal cases, but the points are all over the places
 and far from the dotted line, which means our model doesn't pass the test of Normality; for the scale-location 
