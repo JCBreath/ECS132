@@ -8,16 +8,25 @@ The first problem in Part A asks us to find the 95 confidence interval, we we fi
 mean value, standard deviation std, total number n of each class's score, and calculate the 95% 
 confidence interval by ( mean - std / sqrt(n) , mean + std / sqrt(n) ). This part is done by CI_95 function in our program.
 
+	95% confidence interval for each class:
+	ECS132 (2.542122, 2.758809)
+	ECS145 (3.160756, 3.403172)
+	ECS158 (3.099078, 3.314040)
+
 For the second question, we are asked to find the 95 condidence interval for both ecs 132 and 145, 
 which means we need to find the confidence interval for 2 independent samples. Let sample of 132 
 denote A and sample of 145 denote B. Then, the 95 confidence interval is 
 (mean_A - mean_B + 1.96* sqrt(std_A^2/n_A + std_B^2/n_B), mean_A - mean_B - 1.96* sqrt(std_A^2/n_A + std_B^2/n_B)). 
 This part is done by CI_DIFF function in our program.
+	95% confidence interval for difference in quiz average of ECS132 and ECS145 class:
+	ECS132 (-0.7940708, -0.4689267)
 
 The third question is similar to the second problem. We just need to extract 2 set of data that based on 
 ECS145' data's first column of information, "LCSI" and "ECSE", and get 2 separate file by usuing the subset.
 Then, we use the CI_DIFF function in our program, and process the data as 2 separate sample, and get the 
 95 confidence interval in the similar way as the second problem.
+	95% confidence interval for difference in quiz average of major CS and CSE in ECS145 class:
+	ECS132 (-0.4121534,  0.5162450)
 
 The fourth question, we need to first form 3 vectors, year, course, and major. For year, 
 we defind by the format "year.quarter". So, for example, winter 2017 is labeled as 2017.00, 
@@ -27,6 +36,7 @@ LCSI as 1. Then, we match these label with the dataset we have. The, we combine 
 year, and major into big chunk of data. So, here, we provide a plot that show the relationship 
 between each group of data. 
 Then, we train the linear regression with function lm(Score ~ Course + Year + Major, data = dat).
+
 
 For the last question of A, we tried to build a model based on the proportion of CS major and the year; 
 then we plot it to get a sense of how well it fits; We come to the conclusion that the model doesn't fit 
